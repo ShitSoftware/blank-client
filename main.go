@@ -46,7 +46,7 @@ func main() {
 
 	r, err := http.DefaultClient.Do(rq)
 	if err != nil {
-		fmt.Print("\rCan't connect with web server")
+		fmt.Print("\rCan't connect to web server")
 		return
 	}
 
