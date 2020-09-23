@@ -24,8 +24,8 @@ func main() {
 		return
 	}
 
-	var b *bytes.Buffer
-	writer := multipart.NewWriter(b)
+	var b bytes.Buffer
+	writer := multipart.NewWriter(&b)
 	p, err := writer.CreateFormFile("file", filepath.Base(f.Name()))
 	if err != nil {
 		fmt.Print("Unknown error occurred")
@@ -35,7 +35,7 @@ func main() {
 	io.Copy(p, f)
 	writer.Close()
 
-	rq, err := http.NewRequest("POST", "https://blank.maxunof.me", b)
+	rq, err := http.NewRequest("POST", "https://blank.maxunof.me", &b)
 	if err != nil {
 		fmt.Print("Unknown error occurred")
 		return
